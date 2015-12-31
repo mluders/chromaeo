@@ -15,18 +15,6 @@ function writeStringToStorage(s) {
 				chrome.storage.sync.set({"logFile": newString});
 	    }
 	  });
-	
-	/*var oldString;
-	
-	if (localStorage.logFile)
-		oldString = localStorage.logFile;
-	else
-		oldString = "";
-	
-	var newString = oldString + s;
-	
-	localStorage.logFile = newString;
-	alert (localStorage.logFile);*/
 		
 	chrome.storage.sync.get("logFile", function(items) {
 	    if (!chrome.runtime.error) {
