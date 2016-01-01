@@ -7,7 +7,7 @@
 	],
   "browser_action": {
     "default_icon": "icon.png",
-		"default_title": "Configure",
+		"default_title": "Chromaeo",
 		"default_popup": "popup.html"
   },
 	
