@@ -26,9 +26,9 @@ function writeStringToStorage(s) {
 	
 }
 
-/*window.onload = function() {
+window.onload = function() {
 	writeStringToStorage("<br>");
-}*/
+}
 
 document.onkeypress = function(evt) {
 	
