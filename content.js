@@ -26,23 +26,9 @@ function writeStringToStorage(s) {
 	
 }
 
-function deleteCharFromStorage() {
-	chrome.storage.sync.get("logFile", function(items) {
-		
-	    if (!chrome.runtime.error) {
-			
-			if (items.logFile) {
-				var oldString = items.logFile;
-				var newString = oldString.slice(0, -1);
-				chrome.storage.sync.set({"logFile": newString});
-			}
-		}
-	});
-}
-
-window.onload = function() {
+/*window.onload = function() {
 	writeStringToStorage("<br>");
-}
+}*/
 
 document.onkeypress = function(evt) {
 	
@@ -58,18 +44,3 @@ document.onkeypress = function(evt) {
 	writeStringToStorage(stringToWrite);
 	stringToWrite = "";
 }
-
-/*document.addEventListener("keydown", KeyCheck);  //or however you are calling your method
-function KeyCheck(event)
-{
-   var KeyID = event.keyCode;
-   switch(KeyID)
-   {
-		case 8: case 46:
-			alert("backspace");
-			break; 
-
-		default:
-			break;
-   }
-}*/
