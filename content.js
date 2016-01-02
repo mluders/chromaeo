@@ -1,4 +1,5 @@
 var stringToWrite = "";
+var isEnabled = true;
 
 function writeStringToStorage(s) {
 	
@@ -20,17 +21,16 @@ function writeStringToStorage(s) {
 		
 	chrome.storage.sync.get("logFile", function(items) {
 	    if (!chrome.runtime.error) {
-	      console.log(items.logFile);
+	    	console.log(items.logFile);
 	    }
-	  });
+	});
 	
 }
 
-window.onload = function() {
-	writeStringToStorage("<br>");
-}
-
 document.onkeypress = function(evt) {
+	
+	if (!isEnabled)
+		return;
 	
 	// Get the key
 	evt = evt || window.event;
@@ -44,3 +44,27 @@ document.onkeypress = function(evt) {
 	writeStringToStorage(stringToWrite);
 	stringToWrite = "";
 }
+
+function updateEnabled() {
+	chrome.storage.sync.get("chromaeoIsEnabled", function(items) {
+		if (items.chromaeoIsEnabled) {
+			isEnabled = true;
+			
+		}
+		else {
+			isEnabled = false;
+		}
+	});
+}
+
+window.onload = function() {
+	updateEnabled();
+	//writeStringToStorage("<br>");
+	
+}
+
+chrome.runtime.onMessage.addListener( function(request, sender, sendResponse) {
+    if( request.message === "enabledChanged" ) {
+    	updateEnabled();
+    }
+});
